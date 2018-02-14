@@ -4,5 +4,6 @@ Modified evilsocket plugins minimally changed from existing ones written by the 
 
 Instructions:
 
-Clone
-Place it the orginal source folder
+1. Clone
+
+2. Place it the orginal source folder
